@@ -63,4 +63,9 @@ dependencies {
     androidTestImplementation libs.androidx.ui.test.junit4
     debugImplementation libs.androidx.ui.tooling
     debugImplementation libs.androidx.ui.test.manifest
+    implementation "com.github.netplusTeam:contactless-sdk:1.0.29"
+    implementation "com.github.netplusTeam:netplus-epms:1.0.22"
+    implementation 'com.github.netplusTeam:NetposNibssClient:1.0.15'
+    implementation "com.github.D-Soft-Tech:DPrefs:1.0.4"
+    implementation 'com.pixplicity.easyprefs:EasyPrefs:1.10.0'
 }
