@@ -7,6 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -39,15 +40,17 @@ import com.danbamitale.epmslib.entities.clearPinKey
 import com.example.softtest.app.AppUtils.CONFIG_DATA
 import com.example.softtest.app.AppUtils.KEY_HOLDER
 import com.example.softtest.app.AppUtils.getSavedKeyHolder
+import com.example.softtest.databinding.ActivityMainBinding
 import com.example.softtest.models.CardResult
 import com.netpluspay.contactless.sdk.start.ContactlessSdk
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
 
     private val gson: Gson = Gson()
     private var userData: UserData = getSampleUserData(this)
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()
     var netposPaymentClient: NetposPaymentClient = NetposPaymentClient
+    private lateinit var binding: ActivityMainBinding
 
     private val makePaymentResultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -73,6 +76,8 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        binding = ActivityMainBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
         enableEdgeToEdge()
         setContent {
             SoftTestTheme {
@@ -97,8 +102,15 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+//        setListeners()
         configureTerminal()
     }
+
+//    private fun setListeners() {
+//        binding.proceed.setOnClickListener {
+//            doCardTransaction("200")
+//        }
+//    }
 
     private fun configureTerminal() {
         compositeDisposable.add(

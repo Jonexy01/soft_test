@@ -2,4 +2,6 @@
 <resources>
 
     <style name="Theme.SoftTest" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.SoftTest2" parent="Theme.Material3.DayNight.NoActionBar" />
 </resources>
